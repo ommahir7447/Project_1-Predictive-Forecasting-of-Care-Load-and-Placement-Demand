@@ -1,0 +1,8 @@
+model,pred_breach_date,actual_breach_date,surge_lead_time_days
+Naïve Persistence,2025-06-02,2025-06-01,-1
+Moving Average,2025-06-04,2025-06-01,-3
+ARIMA,2025-06-02,2025-06-01,-1
+SARIMA,,2025-06-01,0
+Exp. Smoothing,2025-05-23,2025-06-01,9
+Random Forest,,2025-06-01,0
+Gradient Boosting,,2025-06-01,0
