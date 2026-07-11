@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 
 st.set_page_config(
     page_title="UAC Forecasting Intelligence",
-    page_icon="assets/favicon.ico",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
