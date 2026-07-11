@@ -4,8 +4,12 @@ import numpy as np
 import pickle
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from pathlib import Path
 import warnings
 warnings.filterwarnings('ignore')
+
+# Resolve paths relative to this script's directory
+BASE_DIR = Path(__file__).parent
 
 st.set_page_config(
     page_title="UAC Forecasting Intelligence",
@@ -269,10 +273,10 @@ def rgba(hex_color, alpha=0.15):
 def load_data():
     try:
         return (
-            pd.read_csv('preprocessed_data.csv', parse_dates=['date']),
-            pd.read_csv('modeling_data.csv',     parse_dates=['date']),
-            pd.read_csv('forecast_results.csv',  parse_dates=['date']),
-            pd.read_csv('test_data.csv',         parse_dates=['date']),
+            pd.read_csv(BASE_DIR / 'preprocessed_data.csv', parse_dates=['date']),
+            pd.read_csv(BASE_DIR / 'modeling_data.csv',     parse_dates=['date']),
+            pd.read_csv(BASE_DIR / 'forecast_results.csv',  parse_dates=['date']),
+            pd.read_csv(BASE_DIR / 'test_data.csv',         parse_dates=['date']),
         )
     except FileNotFoundError as e:
         st.error(f"Missing file: {e}")
@@ -281,7 +285,7 @@ def load_data():
 @st.cache_data
 def load_preds():
     try:
-        with open('model_preds.pkl','rb') as f: return pickle.load(f)
+        with open(BASE_DIR / 'model_preds.pkl','rb') as f: return pickle.load(f)
     except: return {}
 
 df, df_model, forecasts, test = load_data()
